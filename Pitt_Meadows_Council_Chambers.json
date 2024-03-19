@@ -1,0 +1,35 @@
+{
+    "system": {
+        "name": "Pitt_Meadows_Council_Chambers",
+        "code_folder_path": "src",
+        "code_entry_file": "main.py",
+        "layout_folder_path": "layout",
+        "sound_folder_path": "sound",
+        "rfile_folder_path": "rfile",
+        "irfile_folder_path": "ir",
+        "system_id": "3720",
+        "author": {
+            "name": "Your Name",
+            "email": "user@yourdomain.com"
+        },
+        "version": "0.0.1",
+        "primary_device_alias": "ProcessorAlias"
+    },
+    "devices": [
+        {
+            "name": "IPCP Pro 250 xi : 192.168.254.250",
+            "part_number": "60-1911-01",
+            "alias": "ProcessorAlias",
+            "network": {
+                "host_network_type": "LAN",
+                "interfaces": [
+                    {
+                        "address": "192.168.254.250",
+                        "type": "LAN"
+                    }
+                ]
+            }
+        }
+    ],
+    "schemaVersion": "1.0.0"
+}
