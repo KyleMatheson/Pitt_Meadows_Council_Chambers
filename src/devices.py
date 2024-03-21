@@ -20,21 +20,16 @@ from modules import ptz_camera_USB_SDI_G2_Series_v1_1_0_0 as CameraModule
 # Define devices
 Processor = ProcessorDevice('Processor')
 
-Relay1 = RelayInterface(Processor, 'RLY01')
-Relay2 = RelayInterface(Processor, 'RLY02')
-
-
-
 ### DSP ###
-DSPInterface = DspModule.EthernetClass('192.168.1.2', 23, Model='Q-Sys Core 110f') 
+DSPInterface = DspModule.EthernetClass('192.168.10.13', 23, Model='Q-Sys Core 110f') 
 DSP = GetConnectionHandler(DSPInterface, 'CallInProgress',pollFrequency=60) 
 
-SwitcherInterface = SwitcherModule.EthernetClass('192.168.1.3', 23, Model='IN1806')
-SwitcherInterface.devicePassword = 'A2WFVRF' 
+SwitcherInterface = SwitcherModule.SerialOverEthernetClass('192.168.10.12', 23, Model='IN1806')
+SwitcherInterface.devicePassword = 'SapphireAdmin' 
 Switcher = GetConnectionHandler(SwitcherInterface,'AutoSwitchMode',pollFrequency=60)
 
-SdiSwitcherInterface = SdiSwitcherModule.EthernetClass('192.168.1.4', 23, Model='SW4 HD 4K PLUS')
-SdiSwitcherInterface.devicePassword = 'A2WFVRF' 
+SdiSwitcherInterface = SdiSwitcherModule.SerialOverEthernetClass('192.168.10.14', 23, Model='SW4 HD 4K PLUS')
+SdiSwitcherInterface.devicePassword = 'SapphireAdmin' 
 SdiSwitcher = GetConnectionHandler(SwitcherInterface,'AutoSwitchMode',pollFrequency=60)
 
 # # Create a TCP/IP socket
@@ -49,28 +44,28 @@ SdiSwitcher = GetConnectionHandler(SwitcherInterface,'AutoSwitchMode',pollFreque
 # server_address = ('192.168.1.5', 23)  # replace with your server's IP and port
 # UsbSwitcherSocket.connect(server_address)
 
-UsbSwitcherInterface = UsbSwitcherModule.SerialOverEthernetClass('192.168.1.5',23) 
+UsbSwitcherInterface = UsbSwitcherModule.SerialOverEthernetClass('192.168.10.15',23) 
 UsbSwitcher = GetConnectionHandler(UsbSwitcherInterface,'Power',pollFrequency=60)
 
-ProjectorInterface = ProjectorModule.EthernetClass('192.168.1.5', 23, Model='EB-2255U')
+ProjectorInterface = ProjectorModule.EthernetClass('192.168.10.41', 3629, Model='EB-PU1007W')
 Projector = GetConnectionHandler(ProjectorInterface,'Power',pollFrequency=60)
 
-DisplayInterface1 = DisplayModule.EthernetClass('192.168.1.6', 23, Model='PNE-601')
+DisplayInterface1 = DisplayModule.EthernetClass('192.168.10.42', 23, Model='PNE-601')
 Display1 = GetConnectionHandler(DisplayInterface1,'Power',pollFrequency=60)
 
-DisplayInterface2 = DisplayModule.EthernetClass('192.168.1.7', 23, Model='PNE-601')
+DisplayInterface2 = DisplayModule.EthernetClass('192.168.10.43', 23, Model='PNE-601')
 Display2 = GetConnectionHandler(DisplayInterface2,'Power',pollFrequency=60)
 
-CameraInterface1 = CameraModule.EthernetClass('192.168.1.8', 23, Model='USB')
+CameraInterface1 = CameraModule.EthernetClass('192.168.10.31', 23, Model='SDI')
 Camera1 = GetConnectionHandler(CameraInterface1,'Power',pollFrequency=60)
 
-CameraInterface2 = CameraModule.EthernetClass('192.168.1.9', 23, Model='SDI')
+CameraInterface2 = CameraModule.EthernetClass('192.168.10.32', 23, Model='SDI')
 Camera2 = GetConnectionHandler(CameraInterface2,'Power',pollFrequency=60)
 
-CameraInterface3 = CameraModule.EthernetClass('192.168.1.10', 23, Model='USB')
+CameraInterface3 = CameraModule.EthernetClass('192.168.10.33', 23, Model='SDI')
 Camera3 = GetConnectionHandler(CameraInterface3,'Power',pollFrequency=60)
 
-CameraInterface4 = CameraModule.EthernetClass('192.168.1.11', 23, Model='SDI')
+CameraInterface4 = CameraModule.EthernetClass('192.168.10.34', 23, Model='SDI')
 Camera4 = GetConnectionHandler(CameraInterface4,'Power',pollFrequency=60)
 
 

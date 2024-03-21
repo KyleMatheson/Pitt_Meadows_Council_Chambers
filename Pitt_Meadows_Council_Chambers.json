@@ -9,27 +9,50 @@
         "irfile_folder_path": "ir",
         "system_id": "3720",
         "author": {
-            "name": "Your Name",
-            "email": "user@yourdomain.com"
+            "name": "Kyle Matheson",
+            "email": "matheson@mcsqaured.com"
         },
         "version": "0.0.1",
-        "primary_device_alias": "ProcessorAlias"
+        "primary_device_alias": "Processor"
     },
     "devices": [
         {
-            "name": "IPCP Pro 250 xi : 192.168.254.250",
+            "name": "IPCP Pro 250 xi : 192.168.10.10",
             "part_number": "60-1911-01",
-            "alias": "ProcessorAlias",
+            "alias": "Processor",
             "network": {
                 "host_network_type": "LAN",
                 "interfaces": [
                     {
-                        "address": "192.168.254.250",
+                        "address": "192.168.10.10",
                         "type": "LAN"
+                        
                     }
                 ]
             }
-        }
+        },
+
+        {
+            "name": "TLP Pro 1025T : 192.168.10.11",
+            "part_number": "60-1565-02",
+            "alias": "ClerkTLP",
+            "network": {
+              "host_network_type": "LAN",
+              "interfaces": [
+                {
+                  "address": "192.168.10.11"
+                }
+              ]
+            },
+            "ui": {
+              "layout_file": "ClerkTLP.gdl",
+              "enable_click_sound": true,
+              "press_feedback": "none",
+              "thumb_change_report_interval": 0.1,
+              "thumb_to_fill_sync_time": 0.5
+            },
+            "extron_control_web_id": "e2e58d2e-5210-4ffb-9de1-038ec01eaf52"
+          }          
     ],
     "schemaVersion": "1.0.0"
 }
