@@ -21,8 +21,8 @@ import control.av
 import system
 import audio
 
-AudioManager_ = audio.AudioManager(ui.tlp.ClerkTLPs) #send UI list to class init
-AudioManager_.addDspObj(devices.DSP) #append DSP object to the class
+AudioManager_ = audio.AudioManager(ui.tlp.ClerkTLPs, devices.DSP) #send UI list to class init
+
 
 
 system.Initialize()  # Call the system's Initialize method

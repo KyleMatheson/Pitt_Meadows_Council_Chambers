@@ -14,29 +14,29 @@ class AudioManager:
         self.VolBtnStateList = ['Pressed', 'Released', 'Repeated']
         BtnRepeatTime = 0.2
 
-        self.LvlWireless1            = [Slider(UiDevice, 2000) for UiDevice in self.uiDeviceList]
+        self.LvlWireless1            = [Slider(UiDevice, 2001) for UiDevice in self.uiDeviceList]
         self.BtnWireless1Mute        = [Button(UiDevice, 2002) for UiDevice in self.uiDeviceList]
         
-        self.LvlWireless2            = [Slider(UiDevice, 2005) for UiDevice in self.uiDeviceList]
-        self.BtnWireless2Mute        = [Button(UiDevice, 2007) for UiDevice in self.uiDeviceList]
+        self.LvlWireless2            = [Slider(UiDevice, 2003) for UiDevice in self.uiDeviceList]
+        self.BtnWireless2Mute        = [Button(UiDevice, 2004) for UiDevice in self.uiDeviceList]
 
-        self.LvlAllMic            = [Slider(UiDevice, 2000) for UiDevice in self.uiDeviceList]
-        self.BtnAllMicMute        = [Button(UiDevice, 2002) for UiDevice in self.uiDeviceList]
+        self.LvlAllMic               = [Slider(UiDevice, 2005) for UiDevice in self.uiDeviceList]
+        self.BtnAllMicMute           = [Button(UiDevice, 2006) for UiDevice in self.uiDeviceList]
         
-        self.LvlPresenterMic           = [Slider(UiDevice, 2020) for UiDevice in self.uiDeviceList]
-        self.BtnPresenterMicMute       = [Button(UiDevice, 2017) for UiDevice in self.uiDeviceList] 
+        self.LvlPresenterMic         = [Slider(UiDevice, 2007) for UiDevice in self.uiDeviceList]
+        self.BtnPresenterMicMute     = [Button(UiDevice, 2008) for UiDevice in self.uiDeviceList] 
 
-        self.LvlMedia                = [Slider(UiDevice, 2030) for UiDevice in self.uiDeviceList]
-        self.BtnMediaMute            = [Button(UiDevice, 2032) for UiDevice in self.uiDeviceList]
+        self.LvlMedia                = [Slider(UiDevice, 2009) for UiDevice in self.uiDeviceList]
+        self.BtnMediaMute            = [Button(UiDevice, 2010) for UiDevice in self.uiDeviceList]
 
-        self.LvlUSBIn                = [Slider(UiDevice,  2035) for UiDevice in self.uiDeviceList]
-        self.BtnUSBInMute            = [Button(UiDevice, 2037) for UiDevice in self.uiDeviceList]
+        self.LvlUSBIn                = [Slider(UiDevice,  2011) for UiDevice in self.uiDeviceList]
+        self.BtnUSBInMute            = [Button(UiDevice, 2012) for UiDevice in self.uiDeviceList]
 
-        self.LvlOverflow                = [Slider(UiDevice,  2035) for UiDevice in self.uiDeviceList]
-        self.BtnOverflowMute            = [Button(UiDevice, 2037) for UiDevice in self.uiDeviceList]
+        self.LvlOverflow             = [Slider(UiDevice,  2013) for UiDevice in self.uiDeviceList]
+        self.BtnOverflowMute         = [Button(UiDevice, 2014) for UiDevice in self.uiDeviceList]
 
-        self.LvlLobby            = [Slider(UiDevice, 2000) for UiDevice in self.uiDeviceList]
-        self.BtnLobbyMute        = [Button(UiDevice, 2002) for UiDevice in self.uiDeviceList]
+        self.LvlLobby                = [Slider(UiDevice, 2015) for UiDevice in self.uiDeviceList]
+        self.BtnLobbyMute            = [Button(UiDevice, 2016) for UiDevice in self.uiDeviceList]
         
 
         self.BtnMuteList =      self.BtnWireless1Mute+self.BtnWireless2Mute+self.BtnAllMicMute+self.BtnPresenterMicMute+\
@@ -90,11 +90,6 @@ class AudioManager:
             
     def MuteFeedback(self, button):
         value = self.dspObject.ReadStatus('Mute', {'Control ID': str(button.Name[:-5])+'Mute'})
-        #Update the button that did the change
-        # if value == 'On':
-        #     button.SetState(1)
-        # elif value == 'Off':
-        #     button.SetState(0)
         for btn in self.BtnMuteList:
             if str(button.Name[:-5]) == str(btn.Name[:-5]):
                 if value == 'On':
@@ -109,7 +104,7 @@ class AudioManager:
                 lvl.SetFill(int(value))
 
     def RecallPreset(self, preset):
-        snapshotbank = 'Shutdown'
+        snapshotbank = 'Presets'
         loadtime = 1
         self.dspObject.Set('SnapshotLoad', preset, {'Load Time': loadtime, 'Bank': snapshotbank})
         if preset == 1: #shutdown
@@ -124,13 +119,6 @@ class AudioManager:
     def AudioStartup(self):
         for btn in self.BtnMuteStartupList:
             btn.SetState(0)
-    
-    def addDspObj(self, dspObject):
-        self.dspObject = dspObject
-
-    
-
-
 
     ProgramLog('audio.py loaded', 'info')
 
